@@ -88,7 +88,7 @@ angular.module('starter.controllers', ['facebook'])
     }
   ])
 
-.controller('ChatsCtrl', function($scope, Chats) {
+.controller('EventsCtrl', function($scope, Events) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -97,14 +97,10 @@ angular.module('starter.controllers', ['facebook'])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
+  $scope.events = Events.all();
+  $scope.remove = function(event) {
+    Events.remove(event);
   };
-})
-
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
 })
 
 .controller('AccountCtrl', function($scope) {
