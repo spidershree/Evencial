@@ -12,14 +12,14 @@ angular.module('starter.controllers', ['facebook'])
 
    // Define user empty data :/
       $scope.user = {};
-      
+
       // Defining user logged status
       $scope.logged = false;
-      
+
       // And some fancy flags to display messages upon user status change
       $scope.byebye = false;
       $scope.salutation = false;
-      
+
       /**
        * Watch for Facebook to be ready.
        * There's also the event that could be used
@@ -33,15 +33,15 @@ angular.module('starter.controllers', ['facebook'])
             $scope.facebookReady = true;
         }
       );
-      
+
       var userIsConnected = false;
-      
+
       Facebook.getLoginStatus(function(response) {
         if (response.status == 'connected') {
           userIsConnected = true;
         }
       });
-      
+
       /**
        * IntentLogin
        */
@@ -51,7 +51,7 @@ angular.module('starter.controllers', ['facebook'])
           $scope.login();
         }
       };
-      
+
       /**
        * Login
        */
@@ -61,12 +61,12 @@ angular.module('starter.controllers', ['facebook'])
             $scope.logged = true;
             $scope.me();
           }
-        
+
         });
        };
-       
+
        /**
-        * me 
+        * me
         */
         $scope.me = function() {
           Facebook.api('/me', function(response) {
@@ -76,10 +76,10 @@ angular.module('starter.controllers', ['facebook'])
             $scope.$apply(function() {
               $scope.user = response;
             });
-            
+
           });
         };
-      
+
       /**
        * Logout
        */
@@ -87,13 +87,13 @@ angular.module('starter.controllers', ['facebook'])
         Facebook.logout(function() {
           $scope.$apply(function() {
             $scope.user   = {};
-            $scope.logged = false;  
+            $scope.logged = false;
           });
         });
       };
 }])
 
-.controller('ChatsCtrl', function($scope, Chats) {
+.controller('EventsCtrl', function($scope, Events) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -102,9 +102,9 @@ angular.module('starter.controllers', ['facebook'])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
+  $scope.events = Events.all();
+  $scope.remove = function(event) {
+    Events.remove(event);
   };
 })
 
