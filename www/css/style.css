@@ -1,5 +1,15 @@
 /* Empty. Add your own CSS if you like */
 
+h2 {
+    color: #00ccff;
+}
+
 .item {
     background-color: #ccf5ff;
 }
+
+/*
+.btn {
+  color: #ccf5ff;
+}
+ */
