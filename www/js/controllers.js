@@ -1,11 +1,16 @@
 angular.module('starter.controllers', ['facebook'])
 
+.config(function(FacebookProvider) {
+  FacebookProvider.init('971313999613067');
+})
+
 .controller('DashCtrl', [
     '$scope',
     '$timeout',
     'Facebook',
     function($scope, $timeout, Facebook) {
-    // Define user empty data :/
+
+   // Define user empty data :/
       $scope.user = {};
       
       // Defining user logged status
@@ -41,6 +46,7 @@ angular.module('starter.controllers', ['facebook'])
        * IntentLogin
        */
       $scope.IntentLogin = function() {
+        console.log("pressed");
         if(!userIsConnected) {
           $scope.login();
         }
@@ -84,11 +90,10 @@ angular.module('starter.controllers', ['facebook'])
             $scope.logged = false;  
           });
         });
-      }
-    }
-  ])
+      };
+}])
 
-.controller('EventsCtrl', function($scope, Events) {
+.controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -97,10 +102,14 @@ angular.module('starter.controllers', ['facebook'])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  $scope.events = Events.all();
-  $scope.remove = function(event) {
-    Events.remove(event);
+  $scope.chats = Chats.all();
+  $scope.remove = function(chat) {
+    Chats.remove(chat);
   };
+})
+
+.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
+  $scope.chat = Chats.get($stateParams.chatId);
 })
 
 .controller('AccountCtrl', function($scope) {
