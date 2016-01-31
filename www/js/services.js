@@ -1,5 +1,24 @@
 angular.module('starter.services', [])
 
+.factory('TheSessionService', function() {
+  var session = {};
+
+  FB.api(
+  '/me',
+  'GET',
+  {"fields":"id,name,location"},
+  function(response) {
+      
+  }
+);
+
+  return {
+    add: function() {
+
+    }
+  }
+})
+
 .factory('Events', function() {
   // Might use a resource here that returns a JSON array
 
